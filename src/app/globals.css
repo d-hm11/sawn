@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+/* ══ متغيرات النظام — هوية صون ══════════════════════════ */
+:root {
+  --white:         #FFFFFF;
+  --off-white:     #FAFAF8;
+  --cream:         #F5F2EC;
+  --green:         #003020;
+  --green-2:       #004030;
+  --green-3:       #005040;
+  --green-pale:    rgba(0,48,32,0.05);
+  --green-border:  rgba(0,48,32,0.12);
+  --gold:          #B09050;
+  --gold-light:    #C8A86A;
+  --gold-pale:     rgba(176,144,80,0.08);
+  --gold-border:   rgba(176,144,80,0.25);
+  --text:          #003020;
+  --text-2:        rgba(0,48,32,0.65);
+  --text-3:        rgba(0,48,32,0.4);
+  --line:          rgba(0,48,32,0.08);
+  --line-gold:     rgba(176,144,80,0.2);
+  --shadow-sm:     0 1px 3px rgba(0,48,32,0.06), 0 1px 2px rgba(0,48,32,0.04);
+  --shadow-md:     0 4px 16px rgba(0,48,32,0.08), 0 2px 6px rgba(0,48,32,0.05);
+  --shadow-lg:     0 12px 40px rgba(0,48,32,0.10), 0 4px 12px rgba(0,48,32,0.06);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: 'Tajawal', sans-serif;
+  direction: rtl;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ══ شريط التنقل ══════════════════════════════════════════ */
+.navbar {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ══ فاصل ════════════════════════════════════════════════ */
+.divider {
+  height: 1px;
+  background: var(--line);
+}
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-border) 40%, var(--gold-border) 60%, transparent);
+}
+
+/* ══ زر أساسي (ذهبي) ══════════════════════════════════════ */
+.btn-primary {
+  background: var(--gold);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  display: inline-block;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(176,144,80,0.3);
+}
+
+/* ══ زر ثانوي (أخضر مخطط) ═══════════════════════════════ */
+.btn-secondary {
+  background: transparent;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+  border: 1.5px solid var(--green-border);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  display: inline-block;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  border-color: var(--green);
+  background: var(--green-pale);
+}
+
+/* ══ زر أخضر مملوء ══════════════════════════════════════ */
+.btn-green {
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+  text-decoration: none;
+}
+.btn-green:hover {
+  background: var(--green-2);
+  transform: translateY(-1px);
+}
+
+/* ══ بطاقة ══════════════════════════════════════════════ */
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s, border-color 0.25s, transform 0.2s;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--gold-border);
+  transform: translateY(-2px);
+}
+
+/* ══ بادج ════════════════════════════════════════════════ */
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.badge::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* ══ تسطير ذهبي تحت العنوان ══════════════════════════════ */
+.title-underline {
+  position: relative;
+  display: inline-block;
+}
+.title-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: 0;
+  width: 60%;
+  height: 2px;
+  background: var(--gold);
+}
+
+/* ══ صف مميزات ════════════════════════════════════════════ */
+.feature-row {
+  border-bottom: 1px solid var(--line);
+  transition: background 0.2s;
+}
+.feature-row:last-child { border-bottom: none; }
+.feature-row:hover { background: var(--green-pale); }
+
+/* ══ أنيميشن ظهور ════════════════════════════════════════ */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal  { animation: reveal 0.7s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+.d1 { animation-delay: 0.05s; }
+.d2 { animation-delay: 0.18s; }
+.d3 { animation-delay: 0.32s; }
+.d4 { animation-delay: 0.46s; }
+
+/* ══ خط نصف دائري للدرع ══════════════════════════════════ */
+.shield-bg {
+  position: absolute;
+  opacity: 0.025;
+  pointer-events: none;
+}
+
+/* ══ حقل إدخال ════════════════════════════════════════════ */
+.input-field {
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  padding: 11px 16px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: 'Tajawal', sans-serif;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input-field:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(0,48,32,0.06);
+}
+
+/* ══ Playfair للعناوين اللاتينية ════════════════════════ */
+.serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* ══ جدول التسعير ════════════════════════════════════════ */
+.pricing-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.pricing-row:last-child { border-bottom: none; }
